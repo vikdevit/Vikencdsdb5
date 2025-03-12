@@ -78,5 +78,6 @@ def predict():
 
 
 if __name__ == "__main__":
+    # le code ci-dessous fonctionne pour lancement en local ou en mode service web avec plateforme cloud render
     port = os.getenv("PORT", 5000)
     app.run(host="0.0.0.0", port=port, debug=True)

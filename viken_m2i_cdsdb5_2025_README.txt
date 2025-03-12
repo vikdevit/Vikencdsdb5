@@ -1,3 +1,4 @@
+A-cas d'utilisation en local
 0-Installation des dépendances
 création environnement virtuel bloc5-env
 (bloc5-env) PS C:\Users\vkhat\PycharmProjects\VikenCDSDB5Project> pip list
@@ -218,3 +219,52 @@ on obtient alors le résultat ci-dessous dans le terminal avec récupération du
 (bloc5-env) PS C:\Users\vkhat\PycharmProjects\VikenCDSDB5Project>
 
 6- On peut ensuite refaire un essai de lancement en suivant dans l'ordre les étapes 1 et 2 ci-dessus
+
+B-cas d'utilisation avec Render (plateforme de déploiement cloud pour héberger l'API et son interface utilisateur)
+
+0- Mettre à jour le fichier dependances_projet_b5.txt pour installer gunicorn
+
+1-Se connecter à Render avec https://render.com
+Créer un compte en s'identifiant avec son compte Github
+Choisir profil student
+
+2-Créer un service web pour l'api flask
+-CLiquer sur Create Web Service
+-Choisir le langage Python
+-Nom du service : viken-cdsdm2i-bloc5-2025-api-flask
+-Region : Frankfurt (EU Central)
+-Indiquer l'url du repository où sont hébergés les scripts et leurs dépendances
+(ici https://github.com/vikdevit/Vikencdsdb5)
+-Indiquer le nom de la branche (ici master)
+-Renseigner pour build command: pip install -r dependances_projet_b5.txt
+-Renseigner pour start command: gunicorn viken_m2i_cdsdb5_2025_app:app
+-Pour l'auto-déploiement suite à push des commits git vers Github choisir Yes (les services se mettent automatiquement à jour)
+-Pour tester cliquer sur start service et ouvrir une page html avec l'url:
+https://viken-cdsdm2i-bloc5-2025-api-flask.onrender.com
+Suivre les logs dans la rubrique Monitor/logs  et la rubrique Events qui permet aussi de suivre le déploiement des commits
+Remarque: en cas de maj du code via git/github laisser render déployer les commit en suivant la rubrique event
+(possibilité d'arrêter le service puis de déclencher manuellement le commit puis de relancer le service après la fin du déploiement)
+
+3-Créer un service web pour l'interface utilisateur Streamlit
+-CLiquer sur Create Web Service
+-Choisir le langage Python
+-Nom du service : viken-cdsdm2i-bloc5-2025-interface-streamlit
+-Region : Frankfurt (EU Central)
+-Indiquer l'url du repository où sont hébergés les scripts et leurs dépendances
+(ici https://github.com/vikdevit/Vikencdsdb5)
+-Indiquer le nom de la branche (ici master)
+-Renseigner pour build command: pip install -r dependances_projet_b5.txt
+-Renseigner pour start command: streamlit run viken_m2i_cdsdb5_2025_interface.py --server.port $PORT --server.address 0.0.0.0
+-Pour l'auto-déploiement suite à push des commits git vers Github choisir Yes (les services se mettent automatiquement à jour)
+-Pour tester cliquer sur start service et ouvrir une page html avec l'url:
+https://viken-cdsdm2i-bloc5-2025-interface.onrender.com
+Suivre les logs dans la rubrique Monitor/logs  et la rubrique Events qui permet aussi de suivre le déploiement des commits
+Remarque: en cas de maj du code via git/github laisser render déployer les commit en suivant la rubrique event
+(possibilité d'arrêter le service puis de déclencher manuellement le commit puis de relancer le service après la fin du déploiement)
+
+Remarque:
+-arrêter les services si non utilisés pour ne pas atteindre la limite maximum mensuelle liée au profil student de Render
+-si besoin d'utilisation, activer les deux services ("Resume Web Service" dans la rubrique settings du service, pas besoin de cliquer sur restart service en haut à droite dans la rubrique event)
+-la relance des services se fait après s'être reconnecté à Render avec ses identifiants Github via https://dashboard.render.com/login
+(patienter environ 1 minute après avoir relancé les services pour qu'ils soient disponibles dans un navigateur).
+-lors de cette relance pas besoin de se connecter à son compte Github et/ou d'ouvrir son projet sous PyCharm (le faire que si on met à jour le code puis pusher les commits vers Github ce qui sera ensuite détecté par Render qui à son tour déployera les commits pushés sur les services web)
