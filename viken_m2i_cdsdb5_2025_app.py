@@ -9,7 +9,12 @@ app = Flask(__name__)
 model = joblib.load("knn_model.pkl")
 scaler = joblib.load("scaler.pkl")
 
+# Route pour la page d'accueil
+@app.route("/", methods=["GET"])
+def home():
+    return "Bienvenue sur l'API !"
 
+# Route pour la prédiction
 @app.route("/predict", methods=["POST"])
 def predict():
     data = request.get_json()
