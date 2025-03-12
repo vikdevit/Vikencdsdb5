@@ -1,0 +1,1 @@
+web: gunicorn viken_m2i_cdsdb5_2025_app:app
