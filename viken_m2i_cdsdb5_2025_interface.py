@@ -10,7 +10,9 @@ petal_width = st.slider("Largeur du pétale", 0.1, 2.5, 0.2)
 
 if st.button("Prédire"):
     input_data = {"features": [sepal_length, sepal_width, petal_length, petal_width]}
-    response = requests.post("http://127.0.0.1:5000/predict", json=input_data)
+    # ligne ci-dessous utilisée si déploiement en local sans Render
+    #response = requests.post("http://127.0.0.1:5000/predict", json=input_data)
+    response = requests.post("https://viken-cdsdm2i-bloc5-2025-api-flask.onrender.com/predict", json=input_data)
 
     if response.status_code == 200:
         st.write(f"Classe prédite : {response.json()['prediction']}")
