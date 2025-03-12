@@ -5,7 +5,7 @@ st.title("API de Viken pour bloc5 CDSD M2i")
 st.title("Prédiction de la fleur d'Iris")
 
 # ajout image d'iris pour l'interface
-st.image("images/iris.jpg", caption="Fleurs d'Iris", use_column_width=True)
+st.image("images/iris.jpg", caption="Fleurs d'Iris", height=300)
 
 sepal_length = st.slider("Longueur du sépale", 4.0, 8.0, 5.1)
 sepal_width = st.slider("Largeur du sépale", 2.0, 4.5, 3.5)
