@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 import joblib
 import numpy as np
 
@@ -12,7 +12,55 @@ scaler = joblib.load("scaler.pkl")
 # Route pour la page d'accueil
 @app.route("/", methods=["GET"])
 def home():
-    return "Bienvenue sur l'API !"
+    #return " Bonjour et bienvenue sur l'API de Viken !"
+    # HTML pour le message de bienvenue avec du style et une image
+    html_content = f"""
+        <!DOCTYPE html>
+        <html lang="fr">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Bienvenue sur l'API</title>
+            <style>
+                body {{
+                    font-family: Arial, sans-serif;
+                    background-color: #f4f4f9;
+                    text-align: center;
+                    color: #333;
+                }}
+                .welcome-message {{
+                    margin-top: 50px;
+                    padding: 20px;
+                    background-color: #4CAF50;
+                    color: white;
+                    border-radius: 10px;
+                    font-size: 24px;
+                }}
+                img {{
+                    max-width: 300px;
+                    margin-top: 30px;
+                    border-radius: 10px;
+                }}
+                .container {{
+                    padding: 20px;
+                    max-width: 800px;
+                    margin: 0 auto;
+                }}
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <div class="welcome-message">
+                    <h1>Bonjour et bienvenue sur l'API de Viken !</h1>
+                    <p>Cette API permet de prédire la classe d'une fleur d'Iris en fonction des caractéristiques de ses sépales et pétales.</p>
+                </div>
+                <!-- Utilisation de Flask pour servir l'image -->
+                <img src="static/VKpic.jpg" alt="Logo ou image de l'API">
+            </div>
+        </body>
+        </html>
+        """
+    return html_content
 
 # Route pour la prédiction
 @app.route("/predict", methods=["POST"])
