@@ -1,5 +1,3 @@
-import numpy as np
-import pandas as pd
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
@@ -27,10 +25,6 @@ model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
 print(f"Accuracy: {accuracy:.2f}")
-
-#penser à rajouter avec l'entrainement et la séparation du modèle
-# ajouter des courbes illustrant les métriques et mes soavegarder dans mon projet sous forme png
-# tester aussi si c'est du surapprentissage
 
 # Sauvegarde du modèle et du scaler
 joblib.dump(model, "knn_model.pkl")
