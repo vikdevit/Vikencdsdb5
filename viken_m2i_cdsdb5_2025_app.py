@@ -76,7 +76,6 @@ def predict():
 
     return jsonify({"prediction": int(prediction[0])})
 
-
 if __name__ == "__main__":
     # le code ci-dessous fonctionne pour lancement en local ou en mode service web avec plateforme cloud render
     port = os.getenv("PORT", 5000)
