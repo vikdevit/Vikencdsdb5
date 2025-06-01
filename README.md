@@ -4,6 +4,9 @@ Ce projet implémente une API **Flask** pour déployer un modèle de machine lea
 Une interface utilisateur via un navigateur web a aussi été développée avec **Streamlit**.  
 L'API et l'interface sont ensuite hebergées sur la plateforme de cloud computing **Render** pour pouvoir être accessibles par n'importe quel utilisateur sur internet.
 
+Ci-dessous lien vidéo de présentation du projet
+https://1drv.ms/v/c/1e2a60e1c2caff68/EWvJuW1dXw5Hj0mL9dkqix4BGz_qL3rI8HihHaFFv6vwfg?e=LHYokR
+
 ## Prérequis
 Créer un environnement virtuel avec **Python 3.11.9** et les dépendances suivantes pouvant être sauvegardées dans un fichier.txt puis installées avec pip depuis un terminal sous un IDE comme ***PyCharm***:
 ```
