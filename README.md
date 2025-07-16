@@ -1,4 +1,4 @@
-# Déploiement de l'API de Prédiction de la Fleur d'Iris avec Flask, Streamlit et Render.
+# Déploiement d'une API de machine learning avec Flask, Streamlit et Render.
 
 Ce projet implémente une API **Flask** pour déployer un modèle de machine learning (KNN) capable de prédire la classe d'une fleur d'Iris en fonction de ses caractéristiques.  
 Une interface utilisateur via un navigateur web a aussi été développée avec **Streamlit**.  
